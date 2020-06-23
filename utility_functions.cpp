@@ -13,10 +13,10 @@ std::array<MapPoint, 14> calculate_points(double longitude, double latitude, dou
 
     sectorPoints.at(0) = MapPoint(longitude, latitude, 0); // first point - size position
 
-    size_t sidePoints = (sectorPoints.size() - 1)/2; //number of points of each side of the arc center
+    int sidePoints = (sectorPoints.size() - 1)/2; //number of points of each side of the arc center
     //size_t numberPoints = sectorPoints.size() - 1; //number of points of the sector arc
     size_t arrayIndex = 0;
-    for(size_t i = -sidePoints; i <= sidePoints ; i++)
+    for(int i = -sidePoints; i <= sidePoints ; i++)
     {
         sectorPoints.at(++arrayIndex) = calculate_position(longitude, latitude, azimuth + (i*deltaAngle), size);
     }
@@ -77,3 +77,53 @@ MapPoint calculate_position(double longitude, double latitude, double bearing, d
     return {final_lon, final_lat, 0};
 
 }
+
+
+
+std::pair<std::string,std::vector<SectorInfo>> read_csv(const std::string& inputFile)
+{
+    std::ifstream inputStream(inputFile, std::ios::in);
+    std::vector<SectorInfo> sectors;
+
+    std::istringstream iss;
+
+    std::string line;
+    std::string columnNames;
+
+    if(inputStream.is_open())
+    {
+
+        std::getline(inputStream, columnNames); // getting column names
+        //change the function to capture the column names
+        while(std::getline(inputStream, line))
+        {
+            SectorInfo info;
+            MapPoint siteLocation;
+
+            std::replace(line.begin(), line.end(), ',',' ');
+            iss.str(line.c_str());
+
+            iss >> info.m_SiteName;
+            iss >> info.m_SectorName;
+            iss >> siteLocation.m_Latitude;
+            iss >> siteLocation.m_Longitude;
+            info.m_SitePosition = siteLocation;
+            iss >> info.m_Azimuth;
+            iss >> info.m_Angle;
+            iss >> info.m_Identifier;
+
+            sectors.push_back(info);
+            iss.clear();
+        }
+        inputStream.close();
+    }
+
+    return {columnNames, sectors};
+}
+
+
+
+
+
+
+

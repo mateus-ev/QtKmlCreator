@@ -36,3 +36,17 @@ void MainWindow::on_outputFilePath_textChanged()
 {
     m_OutputFile = ui->outputFilePath->toPlainText();
 }
+
+void MainWindow::on_generateButton_clicked()
+{
+    auto obj = read_csv(m_InputFile.toStdString());
+    std::ofstream out(m_OutputFile.toStdString(), std::ios::out);
+    if(out.is_open())
+    {
+        for(const auto& el: obj.second)
+            out << el.str() << "\n";
+        out.close();
+        QMessageBox::about(this, ".kml generator", "Done");
+    }
+
+}

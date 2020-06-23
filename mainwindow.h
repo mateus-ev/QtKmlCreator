@@ -6,6 +6,8 @@
 #include <QDir>
 #include <QMessageBox>
 
+#include <utility_functions.h>
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -26,6 +28,8 @@ private slots:
     void on_outputDirButton_clicked();
 
     void on_outputFilePath_textChanged();
+
+    void on_generateButton_clicked();
 
 private:
     Ui::MainWindow *ui;
