@@ -17,10 +17,17 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    utility_functions.cpp \
+    xmlbuilder.cpp \
+    xmlelement.cpp
 
 HEADERS += \
-    mainwindow.h
+    info_storage.h \
+    mainwindow.h \
+    utility_functions.h \
+    xmlbuilder.h \
+    xmlelement.h
 
 FORMS += \
     mainwindow.ui
