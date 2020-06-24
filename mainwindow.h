@@ -3,10 +3,9 @@
 
 #include <QMainWindow>
 #include <QFileDialog>
-#include <QDir>
 #include <QMessageBox>
 
-#include <utility_functions.h>
+#include "utility_functions.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }

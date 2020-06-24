@@ -39,14 +39,20 @@ void MainWindow::on_outputFilePath_textChanged()
 
 void MainWindow::on_generateButton_clicked()
 {
-    auto obj = read_csv(m_InputFile.toStdString());
+
     std::ofstream out(m_OutputFile.toStdString(), std::ios::out);
     if(out.is_open())
     {
-        for(const auto& el: obj.second)
-            out << el.str() << "\n";
+        auto obj = read_csv(m_InputFile.toStdString());
+
+        std::string s = create_site_info(obj.second.at(0));
+        std::string st = create_sector_style(obj.second.at(0));
+
+        out << s;
+        out << st;
+
         out.close();
-        QMessageBox::about(this, ".kml generator", "Done");
+
     }
 
 }

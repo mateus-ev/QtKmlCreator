@@ -24,8 +24,6 @@ std::array<MapPoint, 14> calculate_points(double longitude, double latitude, dou
 }
 
 
-
-
 MapPoint calculate_position(double longitude, double latitude, double bearing, double distance)
 {
     double longitude_rad = longitude*M_PI/180.;
@@ -79,7 +77,6 @@ MapPoint calculate_position(double longitude, double latitude, double bearing, d
 }
 
 
-
 std::pair<std::string,std::vector<SectorInfo>> read_csv(const std::string& inputFile)
 {
     std::ifstream inputStream(inputFile, std::ios::in);
@@ -122,7 +119,58 @@ std::pair<std::string,std::vector<SectorInfo>> read_csv(const std::string& input
 }
 
 
+std::string create_site_syle(const SectorInfo& info)
+{
 
+    return {};
+}
+
+
+std::string create_sector_style(const SectorInfo& info)
+{
+    XmlBuilder style("Style id=\"", info.m_SectorName + "\"", "");
+    XmlBuilder labelStyle("LabelStyle","","");
+    XmlBuilder labelScale("scale", "", "0.500");
+    XmlBuilder icon("IconStyle","","");
+    XmlBuilder iconScale("scale","","0");
+    XmlBuilder polyStyle("PolyStyle","","");
+    XmlBuilder polyColor("color","","ff0000ff");
+    XmlBuilder colorMode("colorMode","","normal");
+    XmlBuilder fill("fill","","1");
+    XmlBuilder outline("outline","","1");
+    XmlBuilder lineStyle("LyneStyle","","");
+    XmlBuilder lineColor("color","", "ff000000");
+    XmlBuilder lineScale("scale","","1");
+    XmlBuilder width("width","","1");
+
+    labelStyle.add_child(labelScale);
+    icon.add_child(iconScale);
+    polyStyle.add_child(polyColor).add_child(colorMode).add_child(fill).add_child(outline);
+    lineStyle.add_child(lineColor).add_child(lineScale).add_child(width);
+
+    style.add_child(labelStyle).add_child(icon).add_child(polyStyle).add_child(lineStyle);
+
+    return style.str();
+}
+
+std::string create_site_info(const SectorInfo& info)
+{
+    XmlBuilder style("Style id=\"", info.m_SiteName + "\"", "");
+    XmlBuilder icon_style("IconStyle", "", "");
+    XmlBuilder colormode("colormode","","normal");
+    XmlBuilder scale("scale","","0.7");
+    XmlBuilder icon("Icon", "","");
+    XmlBuilder href("href","","");
+    XmlBuilder label("LabelStyle","","");
+    XmlBuilder labelscale("scale","","0.7000");
+
+    icon.add_child(href);
+    icon_style.add_child(colormode).add_child(scale).add_child(icon);
+    label.add_child(labelscale);
+    style.add_child(icon_style).add_child(label);
+
+    return style.str();
+}
 
 
 
