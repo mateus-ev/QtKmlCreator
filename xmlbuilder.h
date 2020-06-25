@@ -15,11 +15,11 @@ public:
     XmlBuilder& add_child(XmlBuilder& builder);
 
     std::string str(size_t ident_level = 1) const;
-  //  ~XmlBuilder();
+
 
 private:
     XmlElement m_GroupRoot;
-    std::vector<std::shared_ptr<XmlBuilder>> m_BuilderChilds;
+    std::vector<std::unique_ptr<XmlBuilder>> m_BuilderChilds;
 
 };
 

@@ -30,12 +30,15 @@ private slots:
 
     void on_generateButton_clicked();
 
+    void on_sizeSectorBox_valueChanged(int arg1);
+
 private:
     Ui::MainWindow *ui;
 
 private:
     QString m_InputFile;
     QString m_OutputFile;
+    int m_SectorSize;
 
 };
 #endif // MAINWINDOW_H

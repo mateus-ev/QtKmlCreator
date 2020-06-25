@@ -11,6 +11,10 @@ struct MapPoint
     double m_Longitude;
     double m_Latitude;
     int m_Altitude = 0;
+    std::string str() const
+    {
+        return std::to_string(m_Longitude) + "," + std::to_string(m_Latitude) + "," + std::to_string(m_Altitude);
+    }
 };
 
 
@@ -27,14 +31,11 @@ struct SectorInfo
 
     std::string str() const
     {
-        return  m_SiteName + "\n"
-                + m_SectorName + "\n"
-                + "identifier: " + std::to_string(m_Identifier) + "\n"
-                + "latitude: " + std::to_string(m_SitePosition.m_Latitude) + "\n"
+        return  "Site: " + m_SiteName + "\n"
                 + "longitude: " + std::to_string(m_SitePosition.m_Longitude) + "\n"
-                + "altitude: " + std::to_string(m_SitePosition.m_Altitude) + "\n"
-                + "azimuth: " + std::to_string(m_Azimuth) + "\n"
-                + "angle: " + std::to_string(m_Angle) + "\n";
+                + "latitude: " + std::to_string(m_SitePosition.m_Latitude) + "\n"
+                + "altitude: " + std::to_string(m_SitePosition.m_Altitude);
+
     }
 
 };
