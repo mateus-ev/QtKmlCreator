@@ -4,6 +4,9 @@
 #include <QMainWindow>
 #include <QFileDialog>
 #include <QMessageBox>
+#include <QColor>
+#include <QPalette>
+#include <QColorDialog>
 
 #include "utility_functions.h"
 
@@ -32,6 +35,12 @@ private slots:
 
     void on_sizeSectorBox_valueChanged(int arg1);
 
+    void on_buttonColorSec1_clicked();
+
+    void on_buttonColorSec2_clicked();
+
+    void on_buttonColorSec3_clicked();
+
 private:
     Ui::MainWindow *ui;
 
@@ -39,6 +48,12 @@ private:
     QString m_InputFile;
     QString m_OutputFile;
     int m_SectorSize;
+    QColor m_SecOneColor;
+    QColor m_SecTwoColor;
+    QColor m_SecThreeColor;
+
+private:
+    void initial_config();
 
 };
 #endif // MAINWINDOW_H

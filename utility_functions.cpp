@@ -44,14 +44,15 @@ MapPoint calculate_position(double longitude, double latitude, double bearing, d
 
     double delta_sigma = 1.0;
     double cos_2_sig_m;
-
+    double sigma_linha = sigma +.1;
 
     size_t iter_count = 0;
-    while ( delta_sigma > 0.00000000000001 && iter_count < 200)
+    while ( std::abs(sigma - sigma_linha) > 0.00000000000001 && iter_count < 200)
     {
         cos_2_sig_m = std::cos(2.0*sigma1 + sigma);
         delta_sigma = B * std::sin(sigma)*(cos_2_sig_m + (B/4.0)*(std::cos(sigma)*(-1.0+2.0*cos_2_sig_m*cos_2_sig_m)
                       - (B/6.0)*cos_2_sig_m*(-3.0+4.0*std::sin(sigma)*std::sin(sigma))*(-3.0+4.0*cos_2_sig_m*cos_2_sig_m)));
+        sigma_linha = sigma;
         sigma = distance/(minorAxis*A) + delta_sigma;
         ++iter_count;
     }
@@ -136,7 +137,7 @@ std::string create_site_info(const SectorInfo& info)
     return placemark.str();
 }
 
-std::string create_sector_style(const SectorInfo& info)
+std::string create_sector_style(const SectorInfo& info, std::string color)
 {
     XmlBuilder style("Style"," id=\""+ info.m_SectorName + "\"", "");
     XmlBuilder labelStyle("LabelStyle","","");
@@ -144,7 +145,7 @@ std::string create_sector_style(const SectorInfo& info)
     XmlBuilder icon("IconStyle","","");
     XmlBuilder iconScale("scale","","0");
     XmlBuilder polyStyle("PolyStyle","","");
-    XmlBuilder polyColor("color","","ff0000ff");
+    XmlBuilder polyColor("color","", "ff" + color);
     XmlBuilder colorMode("colorMode","","normal");
     XmlBuilder fill("fill","","1");
     XmlBuilder outline("outline","","1");
@@ -170,7 +171,7 @@ std::string create_site_style(const SectorInfo& info)
     XmlBuilder colormode("colormode","","normal");
     XmlBuilder scale("scale","","0.7");
     XmlBuilder icon("Icon", "","");
-    XmlBuilder href("href","","SymbolBts_New.png");
+    XmlBuilder href("href","","http://maps.google.com/mapfiles/kml/pal4/icon17.png");
     XmlBuilder label("LabelStyle","","");
     XmlBuilder labelscale("scale","","0.7000");
 
@@ -209,7 +210,7 @@ std::string create_sector(const SectorInfo& info, int size)
 
     XmlBuilder geometry_coordinates("coordinates","",sectorGeoPoints);
     XmlBuilder point("Point","","");
-    XmlBuilder point_coordinate("coordinate", "", points[points.size()/2].str());
+    XmlBuilder point_coordinate("coordinates", "", points[points.size()/2].str());
 
     linear.add_child(geometry_coordinates);
     outer.add_child(linear);
@@ -224,6 +225,12 @@ std::string create_sector(const SectorInfo& info, int size)
 
 }
 
+
+std::string change_color_name_endian(const std::string color)
+{
+    auto tempColor = color.substr(1,6);
+    return tempColor.substr(4,2) + tempColor.substr(2,2) + tempColor.substr(0,2);
+}
 
 
 

@@ -25,11 +25,13 @@ std::pair<std::string,std::vector<SectorInfo>> read_csv(const std::string& input
 
 std::string create_site_info(const SectorInfo& info);
 
-std::string create_sector_style(const SectorInfo& info);
+std::string create_sector_style(const SectorInfo& info, std::string color);
 
 std::string create_site_style(const SectorInfo& info);
 
 std::string create_sector(const SectorInfo& info, int size);
+
+std::string change_color_name_endian(const std::string color);
 
 
 #endif // UTILITY_FUNCTIONS_H
