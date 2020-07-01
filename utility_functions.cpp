@@ -1,3 +1,7 @@
+/*
+ *  author: Mateus Evangelista
+ *  license model:
+*/
 #include "utility_functions.h"
 
 //WGS84 parameters
@@ -121,10 +125,10 @@ std::pair<std::string,std::vector<SectorInfo>> read_csv(const std::string& input
 }
 
 
-std::string create_site_info(const SectorInfo& info)
+std::string create_site_info(const SectorInfo& info, bool siteLabel)
 {
     XmlBuilder placemark("Placemark","","");
-    XmlBuilder name(info.m_SiteName,"","");
+    XmlBuilder name("name", "", siteLabel ? info.m_SiteName : "");
     XmlBuilder styleUrl("styleUrl", "", "#"+info.m_SiteName);
     XmlBuilder description("description","", info.str());
     XmlBuilder point("Point","","");
@@ -137,7 +141,7 @@ std::string create_site_info(const SectorInfo& info)
     return placemark.str();
 }
 
-std::string create_sector_style(const SectorInfo& info, std::string color)
+std::string create_sector_style(const SectorInfo& info, std::string color, bool randomColor)
 {
     XmlBuilder style("Style"," id=\""+ info.m_SectorName + "\"", "");
     XmlBuilder labelStyle("LabelStyle","","");
@@ -145,8 +149,8 @@ std::string create_sector_style(const SectorInfo& info, std::string color)
     XmlBuilder icon("IconStyle","","");
     XmlBuilder iconScale("scale","","0");
     XmlBuilder polyStyle("PolyStyle","","");
-    XmlBuilder polyColor("color","", "ff" + color);
-    XmlBuilder colorMode("colorMode","","normal");
+    XmlBuilder colorMode("colorMode","", randomColor ? "random" : "normal");
+    XmlBuilder polyColor("color","", randomColor ? "ffffffff": "ff" + color);
     XmlBuilder fill("fill","","1");
     XmlBuilder outline("outline","","1");
     XmlBuilder lineStyle("LyneStyle","","");
@@ -183,10 +187,11 @@ std::string create_site_style(const SectorInfo& info)
     return style.str();
 }
 
-std::string create_sector(const SectorInfo& info, int size)
+std::string create_sector(const SectorInfo& info, int size, bool sectorIdentifier, bool sectorLabel)
 {
     XmlBuilder placemark("Placemark","","");
-    XmlBuilder name("name","",std::to_string(info.m_Identifier));
+    XmlBuilder name("name","", (sectorIdentifier ? std::to_string(info.m_Identifier) : "")
+                    + "\t\t\t\t" + (sectorLabel ? info.m_SectorName : "" ) );
     XmlBuilder styleUrl("styleUrl","","#"+info.m_SectorName);
     XmlBuilder multigeo("MultiGeometry","","");
     XmlBuilder polygon("Polygon","","");

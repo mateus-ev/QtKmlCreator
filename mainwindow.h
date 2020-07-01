@@ -1,3 +1,8 @@
+/*
+ *  author: Mateus Evangelista
+ *  license model:
+*/
+
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
@@ -41,6 +46,14 @@ private slots:
 
     void on_buttonColorSec3_clicked();
 
+    void on_randomColorCheckbox_stateChanged(int arg1);
+
+    void on_pciCheckbox_stateChanged(int arg1);
+
+    void on_siteLabelCheckbox_stateChanged(int arg1);
+
+    void on_sectorLabelCheckbox_stateChanged(int arg1);
+
 private:
     Ui::MainWindow *ui;
 
@@ -51,6 +64,10 @@ private:
     QColor m_SecOneColor;
     QColor m_SecTwoColor;
     QColor m_SecThreeColor;
+    bool m_RandomColor;
+    bool m_SectorIdentifier;
+    bool m_SectorLabel;
+    bool m_SiteLabel;
 
 private:
     void initial_config();

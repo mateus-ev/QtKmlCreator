@@ -1,3 +1,8 @@
+/*
+ *  author: Mateus Evangelista
+ *  license model:
+*/
+
 #include "mainwindow.h"
 
 #include <QApplication>

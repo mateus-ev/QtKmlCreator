@@ -1,3 +1,8 @@
+/*
+ *  author: Mateus Evangelista
+ *  license model:
+*/
+
 #ifndef INFO_STORAGE_H
 #define INFO_STORAGE_H
 

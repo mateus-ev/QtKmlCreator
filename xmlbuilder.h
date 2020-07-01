@@ -1,3 +1,8 @@
+/*
+ *  author: Mateus Evangelista
+ *  license model:
+*/
+
 #ifndef XMLBUILDER_H
 #define XMLBUILDER_H
 

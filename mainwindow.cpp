@@ -1,3 +1,8 @@
+/*
+ *  author: Mateus Evangelista
+ *  license model:
+*/
+
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
@@ -13,6 +18,36 @@ MainWindow::~MainWindow()
 {
     delete ui;
 }
+
+void MainWindow::initial_config()
+{
+    m_SectorSize = 100;
+    ui->widgetColorSec1->setAutoFillBackground(true);
+    ui->widgetColorSec2->setAutoFillBackground(true);
+    ui->widgetColorSec3->setAutoFillBackground(true);
+
+    m_RandomColor = false;
+    m_SectorLabel = false;
+    m_SectorIdentifier = false;
+    m_SiteLabel = false;
+
+    m_SecOneColor = Qt::blue;
+    QPalette palette = ui->widgetColorSec1->palette();
+    palette.setColor(QPalette::Background, m_SecOneColor);
+    ui->widgetColorSec1->setPalette(palette);
+
+    m_SecTwoColor = Qt::red;
+    palette = ui->widgetColorSec2->palette();
+    palette.setColor(QPalette::Background, m_SecTwoColor);
+    ui->widgetColorSec2->setPalette(palette);
+
+    m_SecThreeColor = Qt::gray;
+    palette = ui->widgetColorSec3->palette();
+    palette.setColor(QPalette::Background, m_SecThreeColor);
+    ui->widgetColorSec3->setPalette(palette);
+
+}
+
 
 
 void MainWindow::on_inputFileButton_clicked()
@@ -64,7 +99,7 @@ void MainWindow::on_generateButton_clicked()
             {
                 sectorOrder = 1;
                 out << create_site_style(obj);
-                out << create_site_info(obj);
+                out << create_site_info(obj, m_SiteLabel);
                 siteName = obj.m_SiteName;
             }
 
@@ -75,18 +110,18 @@ void MainWindow::on_generateButton_clicked()
             {
                 case 1:
                     sectorColor= change_color_name_endian(m_SecOneColor.name().toStdString());
-                    out << create_sector_style(obj, sectorColor);
+                    out << create_sector_style(obj, sectorColor, m_RandomColor);
                     break;
                 case 2:
                     sectorColor = change_color_name_endian(m_SecTwoColor.name().toStdString());
-                    out << create_sector_style(obj, sectorColor);
+                    out << create_sector_style(obj, sectorColor, m_RandomColor);
                     break;
                 case 3:
                     sectorColor = change_color_name_endian(m_SecThreeColor.name().toStdString());
-                    out << create_sector_style(obj, sectorColor);
+                    out << create_sector_style(obj, sectorColor, m_RandomColor);
                     break;
             }
-            out << create_sector(obj, m_SectorSize);
+            out << create_sector(obj, m_SectorSize, m_SectorIdentifier, m_SectorLabel);
 
             ++sectorOrder;
             sectorColor.clear();
@@ -101,7 +136,7 @@ void MainWindow::on_generateButton_clicked()
 
 }
 
-void MainWindow::on_sizeSectorBox_valueChanged(int size)
+void MainWindow::on_sizeSectorBox_valueChanged(int )
 {
     m_SectorSize = ui->sizeSectorBox->value();
 }
@@ -134,31 +169,22 @@ void MainWindow::on_buttonColorSec3_clicked()
     ui->widgetColorSec3->setPalette(palette);
 }
 
-
-
-
-void MainWindow::initial_config()
+void MainWindow::on_randomColorCheckbox_stateChanged(int )
 {
-    m_SectorSize = 100;
-    ui->widgetColorSec1->setAutoFillBackground(true);
-    ui->widgetColorSec2->setAutoFillBackground(true);
-    ui->widgetColorSec3->setAutoFillBackground(true);
-
-    m_SecOneColor = Qt::blue;
-    QPalette palette = ui->widgetColorSec1->palette();
-    palette.setColor(QPalette::Background, m_SecOneColor);
-    ui->widgetColorSec1->setPalette(palette);
-
-    m_SecTwoColor = Qt::red;
-    palette = ui->widgetColorSec2->palette();
-    palette.setColor(QPalette::Background, m_SecTwoColor);
-    ui->widgetColorSec2->setPalette(palette);
-
-    m_SecThreeColor = Qt::gray;
-    palette = ui->widgetColorSec3->palette();
-    palette.setColor(QPalette::Background, m_SecThreeColor);
-    ui->widgetColorSec3->setPalette(palette);
-
+    m_RandomColor = ui->randomColorCheckbox->isChecked();
 }
 
+void MainWindow::on_pciCheckbox_stateChanged(int )
+{
+    m_SectorIdentifier = ui->pciCheckbox->isChecked();
+}
 
+void MainWindow::on_siteLabelCheckbox_stateChanged(int )
+{
+    m_SiteLabel = ui->siteLabelCheckbox->isChecked();
+}
+
+void MainWindow::on_sectorLabelCheckbox_stateChanged(int )
+{
+    m_SectorLabel = ui->sectorLabelCheckbox->isChecked();
+}

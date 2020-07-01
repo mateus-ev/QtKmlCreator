@@ -1,3 +1,8 @@
+/*
+ *  author: Mateus Evangelista
+ *  license model:
+*/
+
 #ifndef UTILITY_FUNCTIONS_H
 #define UTILITY_FUNCTIONS_H
 
@@ -23,13 +28,13 @@ MapPoint calculate_position(double longitude, double latitude, double bearing, d
 std::pair<std::string,std::vector<SectorInfo>> read_csv(const std::string& inputFile);
 
 
-std::string create_site_info(const SectorInfo& info);
+std::string create_site_info(const SectorInfo& info, bool siteLabel);
 
-std::string create_sector_style(const SectorInfo& info, std::string color);
+std::string create_sector_style(const SectorInfo& info, std::string color, bool randomColor);
 
 std::string create_site_style(const SectorInfo& info);
 
-std::string create_sector(const SectorInfo& info, int size);
+std::string create_sector(const SectorInfo& info, int size, bool sectorIdentifier, bool sectorLabel);
 
 std::string change_color_name_endian(const std::string color);
 

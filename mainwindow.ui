@@ -6,20 +6,202 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>845</width>
-    <height>354</height>
+    <width>822</width>
+    <height>339</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>.kml creator</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QWidget" name="layoutWidget">
+   <widget class="QWidget" name="">
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>40</y>
-      <width>801</width>
+      <y>100</y>
+      <width>791</width>
+      <height>141</height>
+     </rect>
+    </property>
+    <layout class="QGridLayout" name="gridLayout_3">
+     <item row="0" column="0">
+      <layout class="QVBoxLayout" name="verticalLayout_4">
+       <item>
+        <widget class="QLabel" name="label_2">
+         <property name="styleSheet">
+          <string notr="true">font: 12pt &quot;MS Shell Dlg 2&quot;;</string>
+         </property>
+         <property name="text">
+          <string>Display label</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_3">
+         <item>
+          <widget class="QCheckBox" name="pciCheckbox">
+           <property name="text">
+            <string>PCI/PSC/BCCH</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="siteLabelCheckbox">
+           <property name="text">
+            <string>Site Name</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="sectorLabelCheckbox">
+           <property name="text">
+            <string>Sector Name</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </item>
+     <item row="0" column="1">
+      <spacer name="horizontalSpacer_5">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>478</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item row="0" column="2">
+      <layout class="QVBoxLayout" name="verticalLayout_5">
+       <item>
+        <layout class="QGridLayout" name="gridLayout_2">
+         <item row="0" column="0">
+          <layout class="QHBoxLayout" name="horizontalLayout_8">
+           <item>
+            <spacer name="horizontalSpacer_4">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>18</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item>
+            <widget class="QLabel" name="label">
+             <property name="styleSheet">
+              <string notr="true">font: 12pt &quot;MS Shell Dlg 2&quot;;</string>
+             </property>
+             <property name="text">
+              <string>Sector Color</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="horizontalSpacer_3">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>18</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+          </layout>
+         </item>
+         <item row="1" column="0">
+          <layout class="QHBoxLayout" name="horizontalLayout_4">
+           <item>
+            <widget class="QLabel" name="labelColorSec1">
+             <property name="text">
+              <string>Sector 1</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QWidget" name="widgetColorSec1" native="true"/>
+           </item>
+           <item>
+            <widget class="QPushButton" name="buttonColorSec1">
+             <property name="text">
+              <string>Select Color</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item row="3" column="0">
+          <layout class="QHBoxLayout" name="horizontalLayout_7">
+           <item>
+            <widget class="QLabel" name="labelColorSec3">
+             <property name="text">
+              <string>Sector 3</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QWidget" name="widgetColorSec3" native="true"/>
+           </item>
+           <item>
+            <widget class="QPushButton" name="buttonColorSec3">
+             <property name="text">
+              <string>Select Color</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item row="2" column="0">
+          <layout class="QHBoxLayout" name="horizontalLayout_6">
+           <item>
+            <widget class="QLabel" name="labelColorSec2">
+             <property name="text">
+              <string>Sector 2</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QWidget" name="widgetColorSec2" native="true"/>
+           </item>
+           <item>
+            <widget class="QPushButton" name="buttonColorSec2">
+             <property name="text">
+              <string>Select Color</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QCheckBox" name="randomColorCheckbox">
+         <property name="text">
+          <string>Randomize color</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>0</y>
+      <width>791</width>
       <height>91</height>
      </rect>
     </property>
@@ -146,145 +328,13 @@
      </item>
     </layout>
    </widget>
-   <widget class="QWidget" name="">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>142</y>
-      <width>801</width>
-      <height>111</height>
-     </rect>
-    </property>
-    <layout class="QGridLayout" name="gridLayout_3">
-     <item row="0" column="0">
-      <spacer name="horizontalSpacer_5">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>618</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item row="0" column="1">
-      <layout class="QGridLayout" name="gridLayout_2">
-       <item row="0" column="0">
-        <layout class="QHBoxLayout" name="horizontalLayout_8">
-         <item>
-          <spacer name="horizontalSpacer_4">
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>18</width>
-             <height>20</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-         <item>
-          <widget class="QLabel" name="label">
-           <property name="styleSheet">
-            <string notr="true">font: 12pt &quot;MS Shell Dlg 2&quot;;</string>
-           </property>
-           <property name="text">
-            <string>Sector Color</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <spacer name="horizontalSpacer_3">
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>18</width>
-             <height>20</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-        </layout>
-       </item>
-       <item row="1" column="0">
-        <layout class="QHBoxLayout" name="horizontalLayout_4">
-         <item>
-          <widget class="QLabel" name="labelColorSec1">
-           <property name="text">
-            <string>Sector 1</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QWidget" name="widgetColorSec1" native="true"/>
-         </item>
-         <item>
-          <widget class="QPushButton" name="buttonColorSec1">
-           <property name="text">
-            <string>Select Color</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-       <item row="3" column="0">
-        <layout class="QHBoxLayout" name="horizontalLayout_7">
-         <item>
-          <widget class="QLabel" name="labelColorSec3">
-           <property name="text">
-            <string>Sector 3</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QWidget" name="widgetColorSec3" native="true"/>
-         </item>
-         <item>
-          <widget class="QPushButton" name="buttonColorSec3">
-           <property name="text">
-            <string>Select Color</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-       <item row="2" column="0">
-        <layout class="QHBoxLayout" name="horizontalLayout_6">
-         <item>
-          <widget class="QLabel" name="labelColorSec2">
-           <property name="text">
-            <string>Sector 2</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QWidget" name="widgetColorSec2" native="true"/>
-         </item>
-         <item>
-          <widget class="QPushButton" name="buttonColorSec2">
-           <property name="text">
-            <string>Select Color</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-      </layout>
-     </item>
-    </layout>
-   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>845</width>
+     <width>822</width>
      <height>20</height>
     </rect>
    </property>

@@ -1,3 +1,7 @@
+/*
+ *  author: Mateus Evangelista
+ *  license model:
+*/
 #include "xmlbuilder.h"
 
 XmlBuilder::XmlBuilder(const std::string& GroupName, const std::string& GroupAttribute, const std::string& GroupText):

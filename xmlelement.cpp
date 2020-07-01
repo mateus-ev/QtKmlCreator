@@ -1,3 +1,7 @@
+/*
+ *  author: Mateus Evangelista
+ *  license model:
+*/
 #include "xmlelement.h"
 
 XmlElement::XmlElement(){}

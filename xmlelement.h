@@ -1,3 +1,8 @@
+/*
+ *  author: Mateus Evangelista
+ *  license model:
+*/
+
 #ifndef XMLELEMENT_H
 #define XMLELEMENT_H
 
