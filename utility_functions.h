@@ -1,6 +1,6 @@
 /*
  *  author: Mateus Evangelista
- *  license model:
+ *  license model: GPLv3
 */
 
 #ifndef UTILITY_FUNCTIONS_H

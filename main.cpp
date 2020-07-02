@@ -1,6 +1,6 @@
 /*
  *  author: Mateus Evangelista
- *  license model:
+ *  license model: GPLv3
 */
 
 #include "mainwindow.h"
